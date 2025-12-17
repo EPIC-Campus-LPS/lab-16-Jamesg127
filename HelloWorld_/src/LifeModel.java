@@ -174,8 +174,22 @@ public class LifeModel implements ActionListener
      */
     private int numLiveNeighbors (int row, int col)
     {
-       return 0;
-    }
+        int total = 0;
+        // For every neighbor
+        for(int i = -1; i < 2; i++) {
+            for(int j = -1; j < 2; j++) {
+                // If i and j are zero, the cell is the current cell
+                if(i == 0 && j == 0) {
+                    continue;
+                }
+                if(inBounds(row + i, col + j)) {
+                    if(myGrid[row + i][col + j].isAliveNow()) {
+                        total++;
+                    }
+                }
+            }
+        }
+        return total;    }
     
     /**
      * Helper method for numLiveNeighbors
@@ -187,7 +201,7 @@ public class LifeModel implements ActionListener
      */
     private boolean inBounds(int row, int col)
     {
-        return false;
+        return row >= 0 && row < myGrid.length && col >= 0 && col < myGrid[0].length;
     }
 }
 

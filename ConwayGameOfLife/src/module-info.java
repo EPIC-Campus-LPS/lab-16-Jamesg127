@@ -1,0 +1,9 @@
+/**
+ * 
+ */
+/**
+ * 
+ */
+module ConwayGameOfLife {
+    requires java.desktop;
+}
